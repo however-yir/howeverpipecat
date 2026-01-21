@@ -11,3 +11,4 @@ This log materializes planned 2026Q1 commit cadence into concrete commits.
 - [C07] 2026-01-15 核心功能 :: feat(core): deliver core capability slice 7
 - [C08] 2026-01-17 核心功能 :: feat(core): deliver core capability slice 8
 - [C09] 2026-01-19 修复 :: fix(core): resolve regression and edge case 9
+- [C10] 2026-01-21 修复 :: fix(core): resolve regression and edge case 10
