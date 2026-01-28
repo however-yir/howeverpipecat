@@ -16,3 +16,4 @@ This log materializes planned 2026Q1 commit cadence into concrete commits.
 - [C12] 2026-01-25 测试 :: test(core): add/adjust smoke and regression coverage 12
 - [C13] 2026-01-26 文档/部署 :: docs(deploy): finalize docs and release checklist 13
 - [C14] 2026-01-27 文档/部署 :: docs(deploy): finalize docs and release checklist 14
+- [C15] 2026-01-28 文档/部署 :: docs(deploy): finalize docs and release checklist 15
