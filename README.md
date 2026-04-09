@@ -1,4 +1,4 @@
-# howeverpipecat
+# howeverpipecat - 实时语音智能体工程分发版 | Real-time Voice Agent Distribution
 
 <p align="center">
   <img src="docs/assets/howeverpipecat-logo.svg" alt="howeverpipecat logo" width="760" />
