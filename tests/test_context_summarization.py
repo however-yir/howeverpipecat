@@ -282,8 +282,16 @@ class TestLLMContextSummarizationConfigDeprecated(unittest.TestCase):
 
     def test_emits_deprecation_warning(self):
         """Test that instantiating the deprecated config emits a DeprecationWarning."""
-        with self.assertWarns(DeprecationWarning):
+        import warnings
+
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always", DeprecationWarning)
             LLMContextSummarizationConfig()
+
+        self.assertTrue(
+            any(issubclass(w.category, DeprecationWarning) for w in caught),
+            "Expected LLMContextSummarizationConfig to emit DeprecationWarning",
+        )
 
     def test_to_auto_config(self):
         """Test conversion to the new LLMAutoContextSummarizationConfig."""

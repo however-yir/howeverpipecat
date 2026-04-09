@@ -1,0 +1,27 @@
+however Pipecat Additional Distribution Notes
+
+This repository is a derivative engineering distribution based on upstream
+`pipecat-ai/pipecat`.
+
+1) Upstream license remains authoritative
+- Keep upstream LICENSE and attribution when redistributing upstream code.
+- Upstream code continues under BSD-2-Clause according to upstream terms.
+
+2) Scope of this file
+- This file describes redistribution boundaries and operational guardrails
+  for fork-owned files and deployment templates.
+- It does not replace or override upstream license obligations.
+
+3) Fork-owned materials
+- Fork-specific scripts, configuration templates, and documentation additions
+  are provided for practical deployment customization.
+- Unless otherwise noted, fork-owned additions are distributed under
+  BSD-2-Clause for compatibility with upstream.
+
+4) No warranty
+- This project is for development, testing, and deployment engineering.
+- It does not provide legal, compliance, or production SLA guarantees.
+
+5) Safety and security notice
+- Users must secure API keys, infrastructure endpoints, and access controls
+  before production use.

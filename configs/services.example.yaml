@@ -1,0 +1,16 @@
+version: 1
+environment: dev
+region: cn-east
+
+services:
+  database:
+    provider: postgres
+    url: postgresql://hc_user:change_me@postgres.internal.example:5432/howeverpipecat
+  redis:
+    url: redis://redis.internal.example:6379/0
+  ollama:
+    base_url: http://ollama.internal.example:11434/v1
+    timeout_ms: 30000
+  telemetry:
+    endpoint: https://telemetry.internal.example/pipecat/events
+    upload_enabled: false

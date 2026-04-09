@@ -35,7 +35,9 @@ share/python-wheels/
 MANIFEST
 .DS_Store
 .env*
+.env.however.local
 fly.toml
+.venv-test/
 
 # Examples
 examples/**/node_modules/
@@ -62,3 +64,4 @@ docs/api/api
 
 # Pipecat
 whisker_setup.py
+reports/

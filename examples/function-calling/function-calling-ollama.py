@@ -27,7 +27,7 @@ from pipecat.runner.utils import create_transport
 from pipecat.services.cartesia.tts import CartesiaTTSService
 from pipecat.services.deepgram.stt import DeepgramSTTService
 from pipecat.services.llm_service import FunctionCallParams
-from pipecat.services.ollama.llm import OLLamaLLMService
+from pipecat.services.ollama.llm import OllamaLLMService
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.transports.daily.transport import DailyParams
 from pipecat.transports.websocket.fastapi import FastAPIWebsocketParams
@@ -73,8 +73,9 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
         ),
     )
 
-    llm = OLLamaLLMService(
-        settings=OLLamaLLMService.Settings(
+    llm = OllamaLLMService(
+        base_url=os.getenv("PIPECAT_OLLAMA_BASE_URL"),
+        settings=OllamaLLMService.Settings(
             model="llama3.2",
             system_instruction="You are a helpful assistant in a voice conversation. Your responses will be spoken aloud, so avoid emojis, bullet points, or other formatting that can't be spoken. Respond to what the user said in a creative, helpful, and brief way.",
         ),

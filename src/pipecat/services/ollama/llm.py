@@ -4,10 +4,12 @@
 # SPDX-License-Identifier: BSD 2-Clause License
 #
 
-"""OLLama LLM service implementation for Pipecat AI framework."""
+"""Ollama LLM service implementation for the Pipecat framework."""
 
 from dataclasses import dataclass
+import os
 from typing import Optional
+import warnings
 
 from loguru import logger
 
@@ -17,19 +19,19 @@ from pipecat.services.openai.llm import OpenAILLMService
 
 @dataclass
 class OllamaLLMSettings(BaseOpenAILLMService.Settings):
-    """Settings for OLLamaLLMService."""
+    """Settings for OllamaLLMService."""
 
     pass
 
 
-class OLLamaLLMService(OpenAILLMService):
-    """OLLama LLM service that provides local language model capabilities.
+class OllamaLLMService(OpenAILLMService):
+    """Ollama LLM service that provides local language model capabilities.
 
-    This service extends OpenAILLMService to work with locally hosted OLLama models,
+    This service extends OpenAILLMService to work with locally hosted Ollama models,
     providing a compatible interface for running large language models locally.
     """
 
-    # OLLama doesn't support the "developer" message role (it seems to quietly
+    # Ollama doesn't support the "developer" message role (it seems to quietly
     # ignore "developer" messages).
     # This value is used by BaseOpenAILLMService when calling the adapter.
     supports_developer_role = False
@@ -41,20 +43,21 @@ class OLLamaLLMService(OpenAILLMService):
         self,
         *,
         model: Optional[str] = None,
-        base_url: str = "http://localhost:11434/v1",
+        base_url: Optional[str] = None,
         settings: Optional[Settings] = None,
         **kwargs,
     ):
-        """Initialize OLLama LLM service.
+        """Initialize Ollama LLM service.
 
         Args:
-            model: The OLLama model to use. Defaults to "llama2".
+            model: The Ollama model to use. Defaults to ``llama2``.
 
                 .. deprecated:: 0.0.105
-                    Use ``settings=OLLamaLLMService.Settings(model=...)`` instead.
+                    Use ``settings=OllamaLLMService.Settings(model=...)`` instead.
 
-            base_url: The base URL for the OLLama API endpoint.
-                    Defaults to "http://localhost:11434/v1".
+            base_url: The base URL for the Ollama API endpoint. If omitted,
+                reads ``PIPECAT_OLLAMA_BASE_URL`` and then falls back to
+                ``http://127.0.0.1:11434/v1``.
             settings: Runtime-updatable settings. When provided alongside deprecated
                 parameters, ``settings`` values take precedence.
             **kwargs: Additional keyword arguments passed to OpenAILLMService.
@@ -73,7 +76,17 @@ class OLLamaLLMService(OpenAILLMService):
         if settings is not None:
             default_settings.apply_update(settings)
 
-        super().__init__(base_url=base_url, api_key="ollama", settings=default_settings, **kwargs)
+        resolved_base_url = (
+            base_url
+            or os.getenv("PIPECAT_OLLAMA_BASE_URL")
+            or "http://127.0.0.1:11434/v1"
+        )
+        super().__init__(
+            base_url=resolved_base_url,
+            api_key="ollama",
+            settings=default_settings,
+            **kwargs,
+        )
 
     def create_client(self, base_url=None, **kwargs):
         """Create OpenAI-compatible client for Ollama.
@@ -87,3 +100,15 @@ class OLLamaLLMService(OpenAILLMService):
         """
         logger.debug(f"Creating Ollama client with api {base_url}")
         return super().create_client(base_url=base_url, **kwargs)
+
+
+class OLLamaLLMService(OllamaLLMService):
+    """Deprecated alias for :class:`OllamaLLMService`."""
+
+    def __init__(self, *args, **kwargs):
+        warnings.warn(
+            "OLLamaLLMService is deprecated; use OllamaLLMService instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        super().__init__(*args, **kwargs)

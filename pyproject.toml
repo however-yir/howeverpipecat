@@ -3,14 +3,14 @@ requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pipecat-ai"
+name = "howeverpipecat-ai"
 dynamic = ["version"]
-description = "An open source framework for voice (and multimodal) assistants"
+description = "A customizable real-time voice and multimodal agent framework"
 license = "BSD-2-Clause"
 license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.11"
-keywords = ["webrtc", "audio", "video", "ai"]
+keywords = ["webrtc", "audio", "video", "multimodal", "agent", "however"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -45,45 +45,45 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://pipecat.ai"
-Documentation = "https://docs.pipecat.ai/"
-Source = "https://github.com/pipecat-ai/pipecat"
-Issues = "https://github.com/pipecat-ai/pipecat/issues"
-Changelog = "https://github.com/pipecat-ai/pipecat/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/however-yir/howeverpipecat"
+Documentation = "https://github.com/however-yir/howeverpipecat/tree/main/docs"
+Source = "https://github.com/however-yir/howeverpipecat"
+Issues = "https://github.com/however-yir/howeverpipecat/issues"
+Changelog = "https://github.com/however-yir/howeverpipecat/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 aic = [ "aic-sdk~=2.1.0" ]
 anthropic = [ "anthropic>=0.49.0,<1" ]
-assemblyai = [ "pipecat-ai[websockets-base]" ]
-asyncai = [ "pipecat-ai[websockets-base]" ]
-aws = [ "aioboto3>=15.5.0,<16", "pipecat-ai[websockets-base]" ]
+assemblyai = [ "howeverpipecat-ai[websockets-base]" ]
+asyncai = [ "howeverpipecat-ai[websockets-base]" ]
+aws = [ "aioboto3>=15.5.0,<16", "howeverpipecat-ai[websockets-base]" ]
 aws-nova-sonic = [ "aws_sdk_bedrock_runtime~=0.4.0; python_version>='3.12'" ]
 azure = [ "azure-cognitiveservices-speech>=1.47.0,<2"]
-cartesia = [ "pipecat-ai[websockets-base]" ]
+cartesia = [ "howeverpipecat-ai[websockets-base]" ]
 camb = [ "camb-sdk>=1.5.4,<2" ]
 cerebras = []
 daily = [ "daily-python~=0.27.0" ]
-deepgram = [ "deepgram-sdk>=6.1.1,<7", "pipecat-ai[websockets-base]" ]
+deepgram = [ "deepgram-sdk>=6.1.1,<7", "howeverpipecat-ai[websockets-base]" ]
 deepseek = []
-elevenlabs = [ "pipecat-ai[websockets-base]" ]
+elevenlabs = [ "howeverpipecat-ai[websockets-base]" ]
 fal = []
 fireworks = []
-fish = [ "ormsgpack>=1.7.0,<2", "pipecat-ai[websockets-base]" ]
-gladia = [ "pipecat-ai[websockets-base]" ]
-google = [ "google-cloud-speech>=2.33.0,<3", "google-cloud-texttospeech>=2.31.0,<3", "google-genai>=1.68.0,<2", "pipecat-ai[websockets-base]" ]
-gradium = [ "pipecat-ai[websockets-base]" ]
+fish = [ "ormsgpack>=1.7.0,<2", "howeverpipecat-ai[websockets-base]" ]
+gladia = [ "howeverpipecat-ai[websockets-base]" ]
+google = [ "google-cloud-speech>=2.33.0,<3", "google-cloud-texttospeech>=2.31.0,<3", "google-genai>=1.68.0,<2", "howeverpipecat-ai[websockets-base]" ]
+gradium = [ "howeverpipecat-ai[websockets-base]" ]
 grok = []
 groq = [ "groq>=0.23.0,<2" ]
 gstreamer = [ "pygobject~=3.50.0" ]
-heygen = [ "livekit>=1.0.13,<2", "pipecat-ai[websockets-base]" ]
+heygen = [ "livekit>=1.0.13,<2", "howeverpipecat-ai[websockets-base]" ]
 hume = [ "hume>=0.11.2,<1" ]
 inworld = []
 koala = [ "pvkoala~=2.0.3" ]
 kokoro = [ "kokoro-onnx>=0.5.0,<1", "requests>=2.32.5,<3" ]
 langchain = [ "langchain>=1.2.13,<2", "langchain-community>=0.4.1,<1", "langchain-openai>=1.1.12,<2" ]
-lemonslice = [ "pipecat-ai[daily]" ]
+lemonslice = [ "howeverpipecat-ai[daily]" ]
 livekit = [ "livekit>=1.0.13,<2", "livekit-api>=1.0.5,<2", "tenacity>=8.2.3,<10.0.0", "pyjwt>=2.12.0,<3" ]
-lmnt = [ "pipecat-ai[websockets-base]" ]
+lmnt = [ "howeverpipecat-ai[websockets-base]" ]
 local = [ "pyaudio~=0.2.14" ]
 local-smart-turn = [ "coremltools>=8.0", "transformers>=4.48.0,<6", "torch>=2.5.0,<3", "torchaudio>=2.5.0,<3" ]
 mcp = [ "mcp[cli]>=1.11.0,<2" ]
@@ -92,35 +92,35 @@ mistral = ["mistralai>=2.0.0,<3"]
 mlx-whisper = [ "mlx-whisper~=0.4.2" ]
 moondream = [ "accelerate~=1.10.0", "einops~=0.8.0", "pyvips[binary]~=3.0.0", "timm~=1.0.13", "transformers>=4.48.0,<6" ]
 nebius = []
-neuphonic = [ "pipecat-ai[websockets-base]" ]
+neuphonic = [ "howeverpipecat-ai[websockets-base]" ]
 novita = []
 nvidia = [ "nvidia-riva-client>=2.25.1,<3" ]
-openai = [ "pipecat-ai[websockets-base]" ]
+openai = [ "howeverpipecat-ai[websockets-base]" ]
 rnnoise = [ "pyrnnoise~=0.4.1" ]
 openrouter = []
 perplexity = []
 piper = [ "piper-tts>=1.3.0,<2", "requests>=2.32.5,<3" ]
 qwen = []
-resembleai = [ "pipecat-ai[websockets-base]" ]
-rime = [ "pipecat-ai[websockets-base]" ]
+resembleai = [ "howeverpipecat-ai[websockets-base]" ]
+rime = [ "howeverpipecat-ai[websockets-base]" ]
 runner = [ "python-dotenv>=1.0.0,<2.0.0", "uvicorn>=0.32.0,<1.0.0", "fastapi>=0.115.6,<1", "pipecat-ai-small-webrtc-prebuilt>=2.4.0"]
 sagemaker = ["aws_sdk_sagemaker_runtime_http2; python_version>='3.12'"]
 sambanova = []
-sarvam = [ "sarvamai==0.1.26", "pipecat-ai[websockets-base]" ]
+sarvam = [ "sarvamai==0.1.26", "howeverpipecat-ai[websockets-base]" ]
 sentry = [ "sentry-sdk>=2.28.0,<3" ]
 silero = []
 simli = [ "simli-ai~=2.0.1"]
-smallest = [ "pipecat-ai[websockets-base]" ]
-soniox = [ "pipecat-ai[websockets-base]" ]
+smallest = [ "howeverpipecat-ai[websockets-base]" ]
+soniox = [ "howeverpipecat-ai[websockets-base]" ]
 soundfile = [ "soundfile~=0.13.1" ]
 speechmatics = [ "speechmatics-voice[smart]~=0.2.8" ]
 strands = [ "strands-agents>=1.9.1,<2" ]
 tavus=[]
 together = []
 tracing = [ "opentelemetry-sdk>=1.33.0,<2", "opentelemetry-api>=1.33.0,<2", "opentelemetry-instrumentation>=0.54b0,<1" ]
-ultravox = [ "pipecat-ai[websockets-base]" ]
+ultravox = [ "howeverpipecat-ai[websockets-base]" ]
 webrtc = [ "aiortc>=1.14.0,<2", "opencv-python>=4.11.0.86,<5" ]
-websocket = [ "pipecat-ai[websockets-base]", "fastapi>=0.115.6,<1" ]
+websocket = [ "howeverpipecat-ai[websockets-base]", "fastapi>=0.115.6,<1" ]
 websockets-base = [ "websockets>=13.1,<16.0" ]
 whisper = [ "faster-whisper~=1.2.1" ]
 xai = []
@@ -226,7 +226,7 @@ directory = "changelog"
 start_string = "<!-- towncrier release notes start -->\n"
 template = "changelog/_template.md.j2"
 title_format = "## [{version}] - {project_date}"
-issue_format = "[#{issue}](https://github.com/pipecat-ai/pipecat/pull/{issue})"
+issue_format = "[#{issue}](https://github.com/however-yir/howeverpipecat/pull/{issue})"
 underlines = ["", "", ""]
 wrap = true
 

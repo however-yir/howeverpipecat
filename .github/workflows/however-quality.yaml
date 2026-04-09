@@ -1,0 +1,53 @@
+name: however-quality
+
+on:
+  pull_request:
+    branches:
+      - "**"
+  push:
+    branches:
+      - main
+      - codex/**
+  workflow_dispatch:
+
+jobs:
+  naming-and-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Naming lint
+        run: python scripts/however_naming_lint.py
+
+      - name: Secrets scan
+        run: bash scripts/however_secrets_scan.sh
+
+  runtime-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install minimal test deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . websockets pytest
+
+      - name: however runtime smoke tests
+        run: |
+          python -m pytest \
+            tests/test_ollama_llm.py \
+            tests/test_however_runtime_config.py \
+            tests/test_however_health.py
+          python scripts/however_service_health.py --skip-network --json

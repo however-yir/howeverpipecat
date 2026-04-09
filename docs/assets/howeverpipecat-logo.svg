@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" role="img" aria-label="howeverpipecat logo">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="220" rx="24" fill="#f8fafc"/>
+  <g transform="translate(36,42)">
+    <rect x="0" y="0" width="136" height="136" rx="24" fill="url(#g)"/>
+    <path d="M28 95c18-10 36-19 54-29 10-6 20-10 31-10 8 0 16 2 23 6" fill="none" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="48" cy="82" r="9" fill="#e2e8f0"/>
+    <circle cx="76" cy="66" r="9" fill="#e2e8f0"/>
+    <circle cx="106" cy="56" r="9" fill="#e2e8f0"/>
+  </g>
+  <g transform="translate(196,74)">
+    <text x="0" y="38" font-size="44" font-family="Menlo, Monaco, Consolas, monospace" fill="#0f172a">howeverpipecat</text>
+    <text x="2" y="78" font-size="22" font-family="Menlo, Monaco, Consolas, monospace" fill="#334155">Realtime Voice &amp; Multimodal Engineering</text>
+  </g>
+</svg>
