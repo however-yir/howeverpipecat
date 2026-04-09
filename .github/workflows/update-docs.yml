@@ -62,7 +62,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
             You are updating documentation for the pipecat-ai/docs repository based on
-            changes merged in PR #${{ steps.pr.outputs.number }} of pipecat-ai/pipecat.
+            changes merged in PR #${{ steps.pr.outputs.number }} of however-yir/howeverpipecat.
 
             ## Setup
 
@@ -114,9 +114,9 @@ jobs:
             GH_TOKEN=$DOCS_SYNC_TOKEN gh pr create \
               --repo pipecat-ai/docs \
               --label auto-docs \
-              --title "docs: update for pipecat PR #${{ steps.pr.outputs.number }}" \
+              --title "docs: update for howeverpipecat PR #${{ steps.pr.outputs.number }}" \
               --body "$(cat <<'BODY'
-            Automated documentation update for [pipecat PR #${{ steps.pr.outputs.number }}](https://github.com/pipecat-ai/pipecat/pull/${{ steps.pr.outputs.number }}).
+            Automated documentation update for [howeverpipecat PR #${{ steps.pr.outputs.number }}](https://github.com/however-yir/howeverpipecat/pull/${{ steps.pr.outputs.number }}).
 
             ## Changes
             <summarize each doc page updated and what changed>

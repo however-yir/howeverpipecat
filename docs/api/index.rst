@@ -10,7 +10,7 @@ Use the navigation on the left to browse modules, or search using the search box
 Quick Links
 -----------
 
-* `GitHub Repository <https://github.com/pipecat-ai/pipecat>`_
+* `GitHub Repository <https://github.com/however-yir/howeverpipecat>`_
 * `Join our Community <https://discord.gg/pipecat>`_
 
 .. toctree::

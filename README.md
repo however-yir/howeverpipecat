@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python)](https://www.python.org/)
 [![Build](https://img.shields.io/badge/Build-uv-6C47FF)](https://docs.astral.sh/uv/)
 [![License](https://img.shields.io/badge/License-BSD--2--Clause-16A34A)](./LICENSE)
-[![Upstream](https://img.shields.io/badge/Upstream-pipecat--ai%2Fpipecat-0EA5E9)](https://github.com/pipecat-ai/pipecat)
+[![Repository](https://img.shields.io/badge/Repo-however--yir%2Fhoweverpipecat-0EA5E9)](https://github.com/however-yir/howeverpipecat)
 
 ---
 
