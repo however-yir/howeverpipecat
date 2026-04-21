@@ -8,11 +8,11 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Mapping
 from urllib.parse import urlparse
-import os
 
 
 def _parse_env_file(path: Path) -> dict[str, str]:
@@ -59,6 +59,8 @@ def _pick(
 
 @dataclass(frozen=True)
 class HoweverRuntimeConfig:
+    """Normalized runtime configuration for however Pipecat services."""
+
     env: str
     region: str
     db_url: str
@@ -74,7 +76,6 @@ def load_however_runtime_config(
     environ: Mapping[str, str] | None = None,
 ) -> HoweverRuntimeConfig:
     """Load local deployment config from env and optional env file."""
-
     path_env = Path(env_path)
     file_env = _parse_env_file(path_env)
     env_vars = dict(os.environ if environ is None else environ)

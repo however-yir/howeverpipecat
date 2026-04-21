@@ -8,17 +8,19 @@
 
 from __future__ import annotations
 
+import socket
+import time
 from dataclasses import asdict, dataclass
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
-import socket
-import time
 
 from pipecat.utils.however_runtime_config import HoweverRuntimeConfig, load_however_runtime_config
 
 
 @dataclass(frozen=True)
 class CheckResult:
+    """Represents the outcome of an individual dependency health check."""
+
     name: str
     status: str
     detail: str
@@ -27,6 +29,7 @@ class CheckResult:
 
     @property
     def ok(self) -> bool:
+        """Return ``True`` when the check status is successful."""
         return self.status == "ok"
 
 
@@ -115,6 +118,7 @@ def run_however_checks(
     *,
     skip_network: bool = False,
 ) -> tuple[dict[str, object], list[CheckResult]]:
+    """Run service dependency checks and return metadata plus detailed check results."""
     resolved_cfg = cfg or load_however_runtime_config()
     if skip_network:
         checks = [
@@ -148,6 +152,7 @@ def build_however_health_result(
     *,
     skip_network: bool = False,
 ) -> dict[str, object]:
+    """Build a JSON-serializable health report for however runtime dependencies."""
     meta, checks = run_however_checks(cfg, skip_network=skip_network)
     all_ok = all(item.ok for item in checks)
     result = {

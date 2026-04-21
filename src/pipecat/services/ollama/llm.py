@@ -6,10 +6,10 @@
 
 """Ollama LLM service implementation for the Pipecat framework."""
 
-from dataclasses import dataclass
 import os
-from typing import Optional
 import warnings
+from dataclasses import dataclass
+from typing import Optional
 
 from loguru import logger
 
@@ -104,6 +104,7 @@ class OLLamaLLMService(OllamaLLMService):
     """Deprecated alias for :class:`OllamaLLMService`."""
 
     def __init__(self, *args, **kwargs):
+        """Initialize legacy alias and emit a deprecation warning."""
         warnings.warn(
             "OLLamaLLMService is deprecated; use OllamaLLMService instead.",
             DeprecationWarning,
