@@ -77,9 +77,7 @@ class OllamaLLMService(OpenAILLMService):
             default_settings.apply_update(settings)
 
         resolved_base_url = (
-            base_url
-            or os.getenv("PIPECAT_OLLAMA_BASE_URL")
-            or "http://127.0.0.1:11434/v1"
+            base_url or os.getenv("PIPECAT_OLLAMA_BASE_URL") or "http://127.0.0.1:11434/v1"
         )
         super().__init__(
             base_url=resolved_base_url,

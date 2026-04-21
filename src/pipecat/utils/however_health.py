@@ -39,7 +39,11 @@ def _fault_type_from_error(name: str, detail: str) -> str:
     lowered = detail.lower()
     if "401" in lowered or "403" in lowered or "unauthorized" in lowered or "forbidden" in lowered:
         return "auth_error"
-    if "connection refused" in lowered or "timed out" in lowered or "name or service not known" in lowered:
+    if (
+        "connection refused" in lowered
+        or "timed out" in lowered
+        or "name or service not known" in lowered
+    ):
         return "network_error"
     if "invalid" in lowered or "must use one of" in lowered:
         return "config_error"
@@ -53,7 +57,13 @@ def _check_tcp(name: str, host: str, port: int, timeout_s: float) -> CheckResult
     try:
         with socket.create_connection((host, port), timeout=timeout_s):
             latency = int((time.monotonic() - start) * 1000)
-            return CheckResult(name=name, status="ok", detail=f"connected {host}:{port}", latency_ms=latency, fault_type="none")
+            return CheckResult(
+                name=name,
+                status="ok",
+                detail=f"connected {host}:{port}",
+                latency_ms=latency,
+                fault_type="none",
+            )
     except OSError as exc:
         latency = int((time.monotonic() - start) * 1000)
         detail = f"{host}:{port} - {exc}"
@@ -73,7 +83,13 @@ def _check_http(name: str, url: str, timeout_s: float) -> CheckResult:
         with urlopen(req, timeout=timeout_s) as resp:
             latency = int((time.monotonic() - start) * 1000)
             if 200 <= resp.status < 400:
-                return CheckResult(name=name, status="ok", detail=f"http {resp.status} {url}", latency_ms=latency, fault_type="none")
+                return CheckResult(
+                    name=name,
+                    status="ok",
+                    detail=f"http {resp.status} {url}",
+                    latency_ms=latency,
+                    fault_type="none",
+                )
             detail = f"http {resp.status} {url}"
             return CheckResult(
                 name=name,
