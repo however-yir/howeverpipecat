@@ -8,17 +8,19 @@
 
 from __future__ import annotations
 
+import socket
+import time
 from dataclasses import asdict, dataclass
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
-import socket
-import time
 
 from pipecat.utils.however_runtime_config import HoweverRuntimeConfig, load_however_runtime_config
 
 
 @dataclass(frozen=True)
 class CheckResult:
+    """Represents the outcome of an individual dependency health check."""
+
     name: str
     status: str
     detail: str
@@ -27,6 +29,7 @@ class CheckResult:
 
     @property
     def ok(self) -> bool:
+        """Return ``True`` when the check status is successful."""
         return self.status == "ok"
 
 
@@ -39,7 +42,11 @@ def _fault_type_from_error(name: str, detail: str) -> str:
     lowered = detail.lower()
     if "401" in lowered or "403" in lowered or "unauthorized" in lowered or "forbidden" in lowered:
         return "auth_error"
-    if "connection refused" in lowered or "timed out" in lowered or "name or service not known" in lowered:
+    if (
+        "connection refused" in lowered
+        or "timed out" in lowered
+        or "name or service not known" in lowered
+    ):
         return "network_error"
     if "invalid" in lowered or "must use one of" in lowered:
         return "config_error"
@@ -53,7 +60,13 @@ def _check_tcp(name: str, host: str, port: int, timeout_s: float) -> CheckResult
     try:
         with socket.create_connection((host, port), timeout=timeout_s):
             latency = int((time.monotonic() - start) * 1000)
-            return CheckResult(name=name, status="ok", detail=f"connected {host}:{port}", latency_ms=latency, fault_type="none")
+            return CheckResult(
+                name=name,
+                status="ok",
+                detail=f"connected {host}:{port}",
+                latency_ms=latency,
+                fault_type="none",
+            )
     except OSError as exc:
         latency = int((time.monotonic() - start) * 1000)
         detail = f"{host}:{port} - {exc}"
@@ -73,7 +86,13 @@ def _check_http(name: str, url: str, timeout_s: float) -> CheckResult:
         with urlopen(req, timeout=timeout_s) as resp:
             latency = int((time.monotonic() - start) * 1000)
             if 200 <= resp.status < 400:
-                return CheckResult(name=name, status="ok", detail=f"http {resp.status} {url}", latency_ms=latency, fault_type="none")
+                return CheckResult(
+                    name=name,
+                    status="ok",
+                    detail=f"http {resp.status} {url}",
+                    latency_ms=latency,
+                    fault_type="none",
+                )
             detail = f"http {resp.status} {url}"
             return CheckResult(
                 name=name,
@@ -99,6 +118,7 @@ def run_however_checks(
     *,
     skip_network: bool = False,
 ) -> tuple[dict[str, object], list[CheckResult]]:
+    """Run service dependency checks and return metadata plus detailed check results."""
     resolved_cfg = cfg or load_however_runtime_config()
     if skip_network:
         checks = [
@@ -132,6 +152,7 @@ def build_however_health_result(
     *,
     skip_network: bool = False,
 ) -> dict[str, object]:
+    """Build a JSON-serializable health report for however runtime dependencies."""
     meta, checks = run_however_checks(cfg, skip_network=skip_network)
     all_ok = all(item.ok for item in checks)
     result = {

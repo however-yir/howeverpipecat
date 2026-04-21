@@ -11,8 +11,8 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 try:
     from pipecat.utils.however_health import build_however_health_result

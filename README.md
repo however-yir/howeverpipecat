@@ -1,11 +1,5 @@
 # howeverpipecat - 实时语音智能体工程分发版 | Real-time Voice Agent Distribution
 
-> **非官方声明（Non-Affiliation）**  
-> 本仓库为社区维护的衍生/二次开发版本，与上游项目及其权利主体不存在官方关联、授权背书或从属关系。  
-> **商标声明（Trademark Notice）**  
-> 相关项目名称、Logo 与商标归其各自权利人所有。本仓库仅用于说明兼容/来源，不主张任何商标权利。
-
-
 <p align="center">
   <img src="docs/assets/howeverpipecat-logo.svg" alt="howeverpipecat logo" width="760" />
 </p>
@@ -18,6 +12,11 @@
 [![Build](https://img.shields.io/badge/Build-uv-6C47FF)](https://docs.astral.sh/uv/)
 [![License](https://img.shields.io/badge/License-BSD--2--Clause-16A34A)](./LICENSE)
 [![Repository](https://img.shields.io/badge/Repo-however--yir%2Fhoweverpipecat-0EA5E9)](https://github.com/however-yir/howeverpipecat)
+
+> **非官方声明（Non-Affiliation）**<br>
+> `howeverpipecat` 是基于 `pipecat-ai/pipecat` 的社区维护衍生发行版，与上游项目及其权利主体不存在官方关联、授权背书或从属关系。<br>
+> **商标声明（Trademark Notice）**<br>
+> `Pipecat` 及相关项目名称、Logo 与商标归其各自权利人所有；本仓库仅用于说明上游来源与兼容关系。
 
 ---
 

@@ -4,8 +4,10 @@
 # SPDX-License-Identifier: BSD 2-Clause License
 #
 
+import asyncio
 import sys
-from importlib.metadata import PackageNotFoundError, version as lib_version
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as lib_version
 
 from loguru import logger
 
@@ -37,8 +39,6 @@ def version() -> str:
 # remainig issues, specially in Python 3.10, in `async.wait_for()`.
 #
 # See https://github.com/python/cpython/pull/98518
-
-import asyncio
 
 if sys.version_info < (3, 12):
     import wait_for2
