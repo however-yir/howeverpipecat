@@ -5,8 +5,9 @@
 #
 
 import asyncio
-from importlib.metadata import PackageNotFoundError, version as lib_version
 import sys
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as lib_version
 
 from loguru import logger
 
