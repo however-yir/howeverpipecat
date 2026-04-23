@@ -74,7 +74,7 @@ google = [ "google-cloud-speech>=2.33.0,<3", "google-cloud-texttospeech>=2.31.0,
 gradium = [ "howeverpipecat-ai[websockets-base]" ]
 grok = []
 groq = [ "groq>=0.23.0,<2" ]
-gstreamer = [ "pygobject~=3.50.0" ]
+gstreamer = [ "pygobject~=3.56.2" ]
 heygen = [ "livekit>=1.0.13,<2", "howeverpipecat-ai[websockets-base]" ]
 hume = [ "hume>=0.11.2,<1" ]
 inworld = []
