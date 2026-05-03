@@ -33,12 +33,12 @@ jobs:
       id-token: write
     steps:
       - name: Checkout pipecat
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Checkout docs
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: pipecat-ai/docs
           token: ${{ secrets.DOCS_SYNC_TOKEN }}
