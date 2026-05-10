@@ -33,7 +33,7 @@ dependencies = [
     "pydantic>=2.10.6,<3",
     "pyloudnorm~=0.2.0",
     "resampy~=0.4.3",
-    "soxr~=1.0.0",
+    "soxr>=1.0,<1.2",
     "openai>=1.74.0,<3",
     # Pinning numba to resolve package dependencies
     "numba>=0.61.2,<1",
